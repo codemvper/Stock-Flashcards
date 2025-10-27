@@ -10,11 +10,18 @@
 ![GitHub stars](https://img.shields.io/github/stars/yourusername/a-share-flashcards?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/yourusername/a-share-flashcards?style=social)
 
-[快速开始](#-快速开始) | [功能特性](#-核心功能) | [API文档](#-api接口)
+[在线演示](https://your-demo-url.com) | [快速开始](#-快速开始) | [功能特性](#-核心功能) | [API文档](#-api接口)
 
 </div>
 
+## 📸 应用截图
 
+<div align="center">
+<img src="https://via.placeholder.com/300x400/4CAF50/FFFFFF?text=移动端界面" alt="移动端界面" width="200"/>
+<img src="https://via.placeholder.com/400x300/2196F3/FFFFFF?text=桌面端界面" alt="桌面端界面" width="300"/>
+</div>
+
+> 💡 **提示**: 请将上方的占位图片替换为实际的应用截图
 
 ## ✨ 核心功能
 
@@ -52,7 +59,7 @@
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/codemvper/a-share-flashcards.git
+git clone https://github.com/yourusername/a-share-flashcards.git
 cd a-share-flashcards
 
 # 2. 创建虚拟环境（推荐）
