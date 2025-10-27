@@ -10,7 +10,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/yourusername/a-share-flashcards?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/yourusername/a-share-flashcards?style=social)
 
-[在线演示](https://your-demo-url.com) | [快速开始](#-快速开始) | [功能特性](#-核心功能) | [API文档](#-api接口)
+[快速开始](#-快速开始) | [功能特性](#-核心功能) | [API文档](#-api接口)
 
 </div>
 
@@ -684,5 +684,6 @@ vercel --prod
 *让投资决策更智能，让财富增长更稳健*
 
 </div>
+
 
 
