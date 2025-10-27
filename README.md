@@ -16,9 +16,10 @@
 
 ## 📸 应用截图
 
+
 <div align="center">
-<img src="https://via.placeholder.com/300x400/4CAF50/FFFFFF?text=移动端界面" alt="移动端界面" width="200"/>
-<img src="https://via.placeholder.com/400x300/2196F3/FFFFFF?text=桌面端界面" alt="桌面端界面" width="300"/>
+<img width="1920" height="1085" alt="下载" src="https://github.com/user-attachments/assets/7840e046-511a-46cd-a880-29a8ed8cdfc6" />
+<img width="1920" height="1085" alt="下载 (1)" src="https://github.com/user-attachments/assets/3a7d961d-3527-4810-bdd1-6e884acf527d" />
 </div>
 
 > 💡 **提示**: 请将上方的占位图片替换为实际的应用截图
@@ -48,6 +49,7 @@
 - **本地存储**：浏览记录和收藏本地保存
 
 ## 🚀 快速开始
+
 
 ### 📋 环境要求
 
@@ -682,4 +684,5 @@ vercel --prod
 *让投资决策更智能，让财富增长更稳健*
 
 </div>
+
 
