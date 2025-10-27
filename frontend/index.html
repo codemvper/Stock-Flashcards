@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A股上市公司闪卡</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 顶部状态栏 -->
+    <header class="header">
+        <div class="header-left">
+            <div class="stat-item">
+                <span class="stat-label">已浏览</span>
+                <span class="stat-value" id="viewedCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">收藏</span>
+                <span class="stat-value" id="favoriteCount">0</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="icon-btn" id="shuffleBtn" title="重新洗牌">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 3 21 3 21 8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21 16 21 21 16 21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                </svg>
+            </button>
+            <button class="icon-btn" id="favoritesBtn" title="收藏列表">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span class="badge" id="favoriteBadge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主卡片区域 -->
+    <main class="main-container">
+        <div class="card-container" id="cardContainer">
+            <div class="card" id="stockCard">
+                <!-- 卡片正面 -->
+                <div class="card-face card-front">
+                    <div class="card-content">
+                        <div class="company-logo">
+                            <img id="companyLogo" src="" alt="公司Logo" onerror="this.style.display='none'">
+                        </div>
+                        <h1 class="company-name" id="companyName">加载中...</h1>
+                        <div class="stock-code-price">
+                            <span class="stock-code" id="stockCode">------</span>
+                            <span class="stock-price" id="stockPrice">---.--</span>
+                        </div>
+                        <div class="price-change" id="priceChange">
+                            <span class="change-value">--.--</span>
+                            <span class="change-percent">--.--％</span>
+                        </div>
+                        <div class="company-info">
+                            <div class="info-item">
+                                <span class="info-label">市值</span>
+                                <span class="info-value" id="marketValue">--- 亿</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">股东数</span>
+                                <span class="info-value" id="holderNum">---</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">户均持股</span>
+                                <span class="info-value" id="holderAvg">--- 万元</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">行业</span>
+                                <span class="info-value">
+                                    <span class="industry-tag" id="industryTag">---</span>
+                                </span>
+                            </div>
+                            <div class="info-item business-desc">
+                                <span class="info-label">主营业务</span>
+                                <span class="info-value">
+                                    <span id="businessDesc">---</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flip-hint">点击翻转查看财务数据 ↻</div>
+                    </div>
+                </div>
+
+                <!-- 卡片反面 -->
+                <div class="card-face card-back">
+                    <div class="card-content">
+                        <h2 class="back-title">财务指标</h2>
+                        
+                        <div class="financial-indicator">
+                            <div class="indicator-header">
+                                <span class="indicator-name">ROE (净资产收益率)</span>
+                                <span class="indicator-value" id="roeValue">--.--％</span>
+                            </div>
+                            <div class="indicator-bar">
+                                <div class="indicator-progress" id="roeProgress"></div>
+                            </div>
+                            <div class="indicator-desc" id="roeDesc">超过同行业 --％ 的公司</div>
+                        </div>
+
+                        <div class="financial-indicator">
+                            <div class="indicator-header">
+                                <span class="indicator-name">PE (市盈率)</span>
+                                <span class="indicator-value" id="peValue">--.--</span>
+                            </div>
+                            <div class="indicator-bar">
+                                <div class="indicator-progress" id="peProgress"></div>
+                            </div>
+                            <div class="indicator-desc" id="peDesc">超过同行业 --％ 的公司</div>
+                        </div>
+
+                        <div class="financial-indicator">
+                            <div class="indicator-header">
+                                <span class="indicator-name">PB (市净率)</span>
+                                <span class="indicator-value" id="pbValue">--.--</span>
+                            </div>
+                            <div class="indicator-bar">
+                                <div class="indicator-progress" id="pbProgress"></div>
+                            </div>
+                            <div class="indicator-desc" id="pbDesc">超过同行业 --％ 的公司</div>
+                        </div>
+
+                        <div class="financial-indicator">
+                            <div class="indicator-header">
+                                <span class="indicator-name">毛利率</span>
+                                <span class="indicator-value" id="grossProfitMarginValue">--.--％</span>
+                            </div>
+                            <div class="indicator-bar">
+                                <div class="indicator-progress" id="grossProfitMarginProgress"></div>
+                            </div>
+                            <div class="indicator-desc" id="grossProfitMarginDesc">vs 5年均值 --％</div>
+                        </div>
+
+                        <div class="financial-indicator">
+                            <div class="indicator-header">
+                                <span class="indicator-name">资产负债率</span>
+                                <span class="indicator-value" id="debtToAssetRatioValue">--.--％</span>
+                            </div>
+                            <div class="indicator-bar">
+                                <div class="indicator-progress" id="debtToAssetRatioProgress"></div>
+                            </div>
+                            <div class="indicator-desc" id="debtToAssetRatioDesc">vs 5年均值 --％</div>
+                        </div>
+
+                        <div class="flip-hint">点击返回基本信息 ↻</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 加载提示 -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>加载中...</p>
+        </div>
+    </main>
+
+    <!-- 底部操作区 -->
+    <footer class="footer">
+        <button class="action-btn dislike-btn" id="dislikeBtn">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>放弃</span>
+        </button>
+        <button class="action-btn like-btn" id="likeBtn">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span>收藏</span>
+        </button>
+    </footer>
+
+    <!-- 收藏列表弹窗 -->
+    <div class="modal" id="favoritesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>我的收藏</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="favoritesList">
+                <p class="empty-message">还没有收藏任何公司</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新手引导 -->
+    <div class="guide-overlay" id="guideOverlay">
+        <div class="guide-content">
+            <div class="guide-step" id="guideStep1">
+                <div class="guide-arrow">👆</div>
+                <p class="guide-text">点击卡片翻转查看财务数据</p>
+            </div>
+            <div class="guide-step hidden" id="guideStep2">
+                <div class="guide-arrow">👈 👉</div>
+                <p class="guide-text">左滑放弃，右滑收藏<br>或点击下方按钮</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
